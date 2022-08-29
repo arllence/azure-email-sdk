@@ -9,7 +9,7 @@ const help_email = process.env['HELP_EMAIL'];
 
 
 async function main(email,otp,subject) {
-    console.log(email,otp,subject)
+    // console.log(email,otp,subject)
     try {
       var client = new EmailClient(connectionString);
       //send mail
