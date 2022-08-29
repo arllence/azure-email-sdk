@@ -45,14 +45,18 @@ http.createServer(function (request, response) {
     request.on('end', function() {
         response.writeHead(200, {'Content-Type': 'text/html'})
         response.end()
-        console.log(JSON.parse(body).explanation);
+
+        try {
+            body = JSON.parse(body) // Coverts received request body to json
+            var email = body['email']
+            var otp = body['otp']
+            var subject = body['subject']
+            main(email,otp,subject) // calls azure senamail fuction
+          } catch (err) {
+            // 👇️ SyntaxError: Unexpected end of JSON input
+            console.log('error', err);
+          }        
         
-        body = JSON.parse(body) // Coverts received request body to json
-        // console.log(body)
-        var email = body['email']
-        var otp = body['otp']
-        var subject = body['subject']
-        main(email,otp,subject) // calls azure senamail fuction
     })
     
 
