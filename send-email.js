@@ -45,6 +45,7 @@ http.createServer(function (request, response) {
     request.on('end', function() {
         response.writeHead(200, {'Content-Type': 'text/html'})
         response.end()
+        console.log(JSON.parse(body).explanation);
         
         body = JSON.parse(body) // Coverts received request body to json
         // console.log(body)
