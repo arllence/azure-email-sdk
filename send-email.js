@@ -47,7 +47,7 @@ http.createServer(function (request, response) {
         response.end()
 
         try {
-            body = JSON.parse(body) // Coverts received request body to json
+            // body = JSON.parse(body) // Coverts received request body to json
             var email = body['email']
             var otp = body['otp']
             var subject = body['subject']
